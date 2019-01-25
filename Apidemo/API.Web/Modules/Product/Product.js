@@ -1,4 +1,4 @@
-﻿
+
 myApp.controller('productsCtrl', function ($scope, $http) {
     var getData = function () {
         $http({
@@ -6,8 +6,12 @@ myApp.controller('productsCtrl', function ($scope, $http) {
             url: "http://localhost:1010/api/product"
         }).then(function (response) {
             $scope.myData = response.data;
+            //if (response.data) $scope.msg = "Post Data Submitted Successfully!";
         }, function (error) {
-        });
+            });
+        $scope.iscreate = false;
+        $scope.isedit = false;
+        $scope.isshow = true;
     }
     getData();
 
@@ -16,7 +20,8 @@ myApp.controller('productsCtrl', function ($scope, $http) {
         $scope.ND = parameter;
         $http.post("http://localhost:1010/api/product/post", parameter).then(function (response) {
             if (response.data) $scope.msg = "Post Data Submitted Successfully!";
-
+            //alert("ss");
+            getData();
 
         }, function (response) {
 
@@ -37,9 +42,6 @@ myApp.controller('productsCtrl', function ($scope, $http) {
             if (response.data) $scope.msg = "Edit Data Submitted Successfully!";
             alert("Success");
             getData();
-            $scope.isedit = false;
-            $scope.isshow = true;
-            $scope.iscreate = false;
 
         }, function (response) {
 
@@ -73,10 +75,13 @@ myApp.controller('productsCtrl', function ($scope, $http) {
         });
     }
 
-    $scope.edit = function (id) {
+    $scope.edit = function (id, name, price, quantity) {
         $scope.isshow = false;
         $scope.isedit = true;
         $scope.ide = id;
+        $scope.namee = name;
+        $scope.pricee = price;
+        $scope.quantitye = quantity;
         $scope.edited = true;
     }
     $scope.create = function () {
