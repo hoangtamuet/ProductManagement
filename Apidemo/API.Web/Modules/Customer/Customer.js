@@ -1,4 +1,4 @@
-﻿
+
 myApp.controller('customersCtrl', function ($scope, $http) {
    
     var getData = function () {
@@ -17,7 +17,7 @@ myApp.controller('customersCtrl', function ($scope, $http) {
         $scope.ND = parameter;
         $http.post("http://localhost:1010/api/customer/post", parameter).then(function (response) {
             if (response.data) $scope.msg = "Post Data Submitted Successfully!";
-
+            getData();
 
         }, function (response) {
 
@@ -38,9 +38,6 @@ myApp.controller('customersCtrl', function ($scope, $http) {
             if (response.data) $scope.msg = "Edit Data Submitted Successfully!";
             alert("Success");
             getData();
-            $scope.isedit = false;
-            $scope.isshow = true;
-            $scope.iscreate = false;
 
         }, function (response) {
 
@@ -78,6 +75,7 @@ myApp.controller('customersCtrl', function ($scope, $http) {
         $scope.isshow = false;
         $scope.isedit = true;
         $scope.ide = id;
+        $scope.namee = name;
         $scope.edited = true;
     }
     $scope.create = function () {
