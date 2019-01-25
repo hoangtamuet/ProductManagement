@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8" />
+	<title>Product Management</title>
+	<script src="Scripts/angular.min.js"></script>
+	<script src="Scripts/AngularUI/ui-router.min.js"></script>
+	<script src="app.js"></script>
+	<script src="Modules/Product/Product.js"></script>
+	<script src="Modules/Customer/Customer.js"></script>
+	<link href="Modules/Product/Product.css" rel="stylesheet" />
+	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="Content/bootstrap-grid.min.css" rel="stylesheet" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<p>Product Management</p>
+			<ul class="nav">
+				<li><a ui-sref="product">Product</a></li>
+				<li><a ui-sref="customer">Customer</a></li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<ui-view></ui-view>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<div ng-controller="customersCtrl" ng-init="isshow=true;isedit=false;iscreate=false">
+	<button ng-click="create()">Create</button>
+	<div ng-show="isshow">
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr ng-repeat="x in myData">
+				<td>{{x.id}}</td>
+				<td>{{x.name}}</td>
+				<td><a class="fa fa-pencil"  ng-click="edit(x.id)" ng-model="edited"></a></td>
+				<td><a class="fa fa-trash"  ng-click="deleteData(x.id)"></a></td>
+			</tr>
+		</table>
+	</div>
+	<div ng-show="iscreate">
+		<p>Id: <input type="text" ng-model="idc"></p>
+		<p>Name: <input type="text" ng-model="namec"></p>
+		<input type="submit" ng-click="postData(idc, namec)" />
+		<p>{{ND}}</p>
+	</div>
+	<div ng-show="isedit">
+		<label>Id: <input type="text" ng-model="ide" ng-readonly="edited"></label>
+		<label>Name: <input type="text" ng-model="namee"></label>
+		<button ng-click="editData(ide, namee)" value="editData">Edit</button>
+		<p>{{ND}}</p>
+	</div>
+
+</div>
+
+
+

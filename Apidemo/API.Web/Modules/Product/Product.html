@@ -1,0 +1,43 @@
+﻿<div ng-controller="productsCtrl" ng-init="isshow=true;isedit=false;iscreate=false">
+	<button ng-click="create()">Create</button>
+	<div ng-show="isshow">
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr ng-repeat="x in myData">
+				<td>{{x.id}}</td>
+				<td>{{x.name}}</td>
+				<td>{{x.price}}</td>
+				<td>{{x.quantity}}</td>
+				<td><a class="fa fa-pencil"  ng-click="edit(x.id)" ng-model="edited"></a></td>
+				<td><a class="fa fa-trash"  ng-click="deleteData(x.id)"></a></td>
+			</tr>
+		</table>
+	</div>
+	<div ng-show="iscreate">
+		<p>Id: <input type="text" ng-model="idc"></p>
+		<p>Name: <input type="text" ng-model="namec"></p>
+		<p>Price: <input type="text" ng-model="pricec"></p>
+		<p>Quantity: <input type="text" ng-model="quantityc"></p>
+		<input type="submit" ng-click="postData(idc, namec, pricec, quantityc)" />
+		<p>{{ND}}</p>
+	</div>
+	<div ng-show="isedit">
+		<label>Id: <input type="text" ng-model="ide" ng-readonly="edited"></label>
+		<label>Name: <input type="text" ng-model="namee"></label>
+		<p>Price: <input type="text" ng-model="pricee"></p>
+		<p>Quantity: <input type="text" ng-model="quantitye"></p>
+		<button ng-click="editData(ide, namee, pricee, quantitye)" value="editData">Edit</button>
+		<p>{{ND}}</p>
+	</div>
+
+</div>
+
+
+	
